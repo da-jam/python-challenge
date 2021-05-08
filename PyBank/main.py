@@ -17,16 +17,15 @@ with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
-
     #print(csvreader)
 
+    #skip header
     csv_header = next(csvreader)
     #print(f"CSV Header: {csv_header}")
 
     # Read each row of data after the header
     for row in csvreader:
         k = k + 1 # count rows
-        #if float(row[1]) <= 0:
         #print(row[0])
         #separte columns to lists for operation
         budget.append(int(row[1]))
@@ -52,10 +51,12 @@ with open(csvpath) as csvfile:
     #min of the differences
     min_diff = min(diff)
     #print(min_diff)
+
     #locate min and max values
     #print(diff.index(max_diff))
     #print(diff.index(min_diff))
-    #print dates for min and max values
+
+    #dates for min and max values
     max_date = dates[(diff.index(max_diff)+1)]
     min_date = dates[(diff.index(min_diff)+1)]
 
@@ -64,8 +65,8 @@ with open(csvpath) as csvfile:
     #print(ave_diff)
 
     #output to terminal
-    print(f"Financial Analysis")
-    print(f"-------------------------------------------------")
+    print("Financial Analysis")
+    print("-------------------------------------------------")
     print(f"Total Months: {k}")
     print(f"Total: ${total}")
     print(f"Average Change: ${ave_diff}")
