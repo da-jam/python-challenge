@@ -1,0 +1,11 @@
+Election Results
+-------------------------------------------------
+Total Votes Cast: 3521001
+-------------------------------------------------
+Khan received 63.00% of the vote (2218231)
+Li received 14.00% of the vote (492940)
+Correy received 20.00% of the vote (704200)
+O'Tooley received 3.00% of the vote (105630)
+-------------------------------------------------
+Winner is Khan
+-------------------------------------------------
