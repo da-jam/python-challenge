@@ -8,9 +8,9 @@ csvpath = os.path.join('.','PyBank','Resources','budget_data.csv')
 
 # variables
 k = 0 # row counter
-budget = []
+budget = [] #profit/loss
 dates = []
-diff = []
+diff = [] #difference from previous date
 
 #read file
 with open(csvpath) as csvfile:
@@ -21,7 +21,7 @@ with open(csvpath) as csvfile:
     #print(csvreader)
 
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
     # Read each row of data after the header
     for row in csvreader:
@@ -39,7 +39,53 @@ with open(csvpath) as csvfile:
     for i in range(k-1):
         diff.append((budget[i+1]-budget[i]))
 
-    print(diff)
+    #print(diff)
+
+    #sum budget for net total of Profit/Loss
+    total = sum(budget)
+    #print(total)
+
+    # max of the differences
+    max_diff = max(diff)
+    #print(max_diff)
+
+    #min of the differences
+    min_diff = min(diff)
+    #print(min_diff)
+    #locate min and max values
+    #print(diff.index(max_diff))
+    #print(diff.index(min_diff))
+    #print dates for min and max values
+    max_date = dates[(diff.index(max_diff)+1)]
+    min_date = dates[(diff.index(min_diff)+1)]
+
+    #average of differences formatted
+    ave_diff = "{:.2f}".format(float(sum(diff)/len(diff)))
+    #print(ave_diff)
+
+    #output to terminal
+    print(f"Financial Analysis")
+    print(f"-------------------------------------------------")
+    print(f"Total Months: {k}")
+    print(f"Total: ${total}")
+    print(f"Average Change: ${ave_diff}")
+    print(f"Greatest Increase in Profits: {max_date} (${max_diff})")
+    print(f"Greatest Decrese in Profits: {min_date} (${min_diff})")
+
+    # output to file
+    outf = open('PyBank/analysis/financial_analysis.txt','w')
+    outf.write("Financial Analysis\n")
+    outf.write("-------------------------------------------------\n")
+    outf.write(f"Total Months: {k}\n")
+    outf.write(f"Total: ${total}\n")
+    outf.write(f"Average Change: ${ave_diff}\n")
+    outf.write(f"Greatest Increase in Profits: {max_date} (${max_diff})\n")
+    outf.write(f"Greatest Decrese in Profits: {min_date} (${min_diff})\n")
+    outf.close
+
+
+
+    
 
 
 
