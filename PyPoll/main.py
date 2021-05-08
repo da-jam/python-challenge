@@ -68,8 +68,9 @@ with open(csvpath) as csvfile:
     outf.write("-------------------------------------------------\n")
     outf.write(f"Total Votes Cast: {total}\n")
     outf.write("-------------------------------------------------\n")
-    outf.write(f"Total: ${total}\n")
-    outf.write(f"Average Change: ${ave_diff}\n")
-    outf.write(f"Greatest Increase in Profits: {max_date} (${max_diff})\n")
-    outf.write(f"Greatest Decrese in Profits: {min_date} (${min_diff})\n")
+    for i in range(ucan):
+        outf.write(f"{ucandl[i]} received {percent[i]}% of the vote ({vote[i]})\n")
+    outf.write("-------------------------------------------------\n")
+    outf.write(f"Winner is {winner}\n")
+    outf.write("-------------------------------------------------\n")
     outf.close
